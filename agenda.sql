@@ -114,6 +114,24 @@ select nome,fone from contatos order by nome asc;
 select * from contatos where nome like 'B%';
 
 
+/* crud UPDATE (update)*/
+-- selecionar todos os registros da tabela
+select * from contatos;
+
+-- alterando um dado específico da tabela usando sempre o id como fonte de identificação
+update contatos set fone='913266-22354' where id=3;
+update contatos set email='michael@otlook.com' where id=3;
+
+-- para mudar todos o registro de um cadastro tudo de uma vez o id não muda
+update contatos set nome='michaell',fone='6666666-66666',email='novoteste@michael.com' where id=3;
+
+/* crud DELETE (deletar)*/
+select * from contatos;
+-- excluindo um registo da tabela 
+delete from contatos where id=3;
+
+
+
 
 
 
