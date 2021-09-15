@@ -15,9 +15,16 @@ show databases;
 -- Criando um banco de dados
 create database dbinfox;
 
+
+-- Selecionar o banco de dados sempre que for trabalha sempre tem que iniciar
+use dbinfox;
+
 -- Remover um banco de dados
 drop database dbinfox;
 
+
+-- Verificar tabelas 
+show tables;
 
 -- Criando uma tabela no baco de dados
 create table usuarios(
@@ -26,28 +33,9 @@ usuario varchar(50) not null,
 login varchar(50) not null,
 senha varchar(250) 
 );
-
--- Selecionar o banco de dados sempre que for trabalha sempre tem que iniciar
-use dbinfox;
-
--- Verificar tabelas disponível
-show tables;
-
 -- Comando usado para descrever a tabela
 describe usuarios;
-
--- preenchimento único
-alter table usuarios modify login varchar(10) unique not null;
--- preenchimento não obrigatório
-alter table usuarios modify senha varchar(10); 
-
-
-
--- Comando usado para apagar um campo da tabela
-alter table usuarios drop column obs;
-
--- Comando para remover uma tabela
-drop table usuarios;
+select * from usuarios;
 
 -- CRUD Criando o cadastro de banco de dados sem colocar o id cujo ele automáticamente distribui para diferênciar um cadastro igual
 insert into usuarios (usuario,login, senha) values ('Camila','camila@gmail.com','12345');
@@ -60,15 +48,73 @@ insert into usuarios (usuario,login, senha) values ('marcio','marcioalgusto@outl
 insert into usuarios (usuario,login, senha) values ('Betina','Betinafernandez@gmail.com', md5('4456464654'));
 
 
+
+
+
+-- Tabela de clientes (clientes da empresa)
+create table clientes(
+   idCli int primary key auto_increment,
+   nome varchar(50) not null,
+   fone varchar(15) not null
+   );
+   
+   
+   -- Cadastro de clientes
+
+insert into clientes (nome,fone) values('carlos','787454645');
+insert into clientes (nome,fone) values('fernanda','91234-1111');
+
+describe clientes;
+select * from clientes;
+   
+   
+   
+   -- Tabela de ordem de serviço (OS)
+create table tbos(
+   os int primary key auto_increment,
+   equipamento varchar(250) not null,
+   defeito varchar(250) not null,
+   dataos timestamp default current_timestamp,
+   statusos varchar(50) not null,
+   valor decimal(10,2),
+   idCli int not null,
+   foreign key(idCli) references clientes (idCli)
+   );
+  describe tbos; 
+  select * from tbos;
+   
+insert into tbos(equipamento,defeito,statusos,idcli)
+values('Notebook Lenovo modelo','Não liga','Orçamento',1);
+
+
+insert into tbos(equipamento,defeito,statusos,valor,idcli)
+values('PC Positivo','Formatação do Windows','Aprovado',80,2);
+
+
+
+
+
+
+
+
+
+
+-- Comando para remover uma tabela
+drop table usuarios;
+drop table clientes;
+drop table tbos;
+
+
+
 -- ordem alfabética pode selecionar todas as listas em ordem alfabética (asc)
 select * from usuarios order by usuario asc;
--- modificando a tabela do campo senha
 
-alter table usuarios modify senha varchar(250);
-alter table usuarios modify login varchar(50);
+-- Comando usado para apagar um campo da tabela
+-- alter table (nome da tabela) drop column (nome da coluna);
 
 
-select * from usuarios;
+
+
 
 
 
