@@ -29,18 +29,17 @@ use  dbmw;
 create table usuarios(
 idus int primary key auto_increment,
 usuario varchar(50) not null,
-login varchar(50) not null,
 senha varchar(250) 
 );
 
 -- Cadastro CRUD de colaboradores
-insert into usuarios (usuario,login,senha) values
- ('Daniel','danielalmeida@gmail.com','123');
- insert into usuarios (usuario,login,senha) values
- ('carlos','carlos@gmail.com','124783');
+insert into usuarios (usuario,senha) values
+ ('Daniel','123');
+ insert into usuarios (usuario,senha) values
+ ('carlos','124783');
 -- Armazenando um campo com criptografia
-insert into usuarios (usuario,login, senha) values ('Daniel','danielalmeida@gmail.com', md5('1234'));
-insert into usuarios (usuario,login, senha) values ('carlos','carlos@gmail.com', md5('124783'));
+insert into usuarios (usuario,senha) values ('Daniel', md5('1234'));
+insert into usuarios (usuario,senha) values ('carlos', md5('124783'));
 
 -- Verificar tabelas disponível
 show tables;
@@ -149,10 +148,10 @@ foreign key(idm) references OsMecanica(idm)
 describe laudo;
 
 
-insert into laudo (analise,solucao,acessorios,diaentrega,idOsmec) 
+insert into laudo (analise,solucao,acessorios,diaentrega,idm) 
 values('Parachoque danificado','substituição de peça','parachoque','6 meses','500.00','1600',1);
 
-insert into laudo (analise,solucao,acessorios,termosGarantia,valorpeca,valorTotal,idOsmec) 
+insert into laudo (analise,solucao,acessorios,valorpeca,valorTotal,idm) 
 values('Motor vela danificada ','Vela gasta','Nova vela','2 meses','200.00','1000',2);
 
 
