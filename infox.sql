@@ -19,8 +19,12 @@ create database dbinfox;
 -- Selecionar o banco de dados sempre que for trabalha sempre tem que iniciar
 use dbinfox;
 
+
+
+
 -- Remover um banco de dados
 drop database dbinfox;
+
 
 
 -- Verificar tabelas 
@@ -29,10 +33,34 @@ show tables;
 -- Criando uma tabela no baco de dados
 create table usuarios(
 id int primary key auto_increment,
-usuario varchar(50) not null,
-login varchar(50) not null,
+usuario varchar(100) not null,
+login varchar(100) not null unique,
 senha varchar(250) 
 );
+select * from usuarios;	
+-- Criando usuário e fazendo 
+insert into usuarios (usuario,login, senha) values ('Maxswell','maxswellsousadiniz@yahoo.com', md5('1234'));
+insert into usuarios (usuario,login, senha) values ('Carla','carla@email.com', md5('1234'));
+-- Fazendo verificação de usuário para ligar com Eclipse
+select * from usuarios where login ='maxswellsousadiniz@yahoo.com' and senha= md5('1234');
+
+-- Linha de Editar ou Update de Usuário
+update usuarios set usuario='Maxswell Diniz',login='maxswell@email.com',senha=md5('6936995591845880') where id=5;
+-- Para excluir usuário sempre pelo id
+delete from usuarios where id=4;
+
+-- Codigo infox no banco de dados p
+
+select * from usuarios;
+select * from usuarios where id = 1;
+select * from usuarios where login='admin@email.com' and senha=md5('123456');
+
+
+
+update usuarios set usuario='Leandro Pereira Ramos',login='ramos@email.com',senha=md5('1234') where id=3;
+
+
+
 -- Comando usado para descrever a tabela
 describe usuarios;
 select * from usuarios;
@@ -47,6 +75,8 @@ insert into usuarios (usuario,login, senha) values ('Bruna','Brunapereira@yahoo.
 insert into usuarios (usuario,login, senha) values ('marcio','marcioalgusto@outlook.com', md5('42125454546'));
 insert into usuarios (usuario,login, senha) values ('Betina','Betinafernandez@gmail.com', md5('4456464654'));
 
+
+select * from usuarios where login='camilaferraz@gmail.com' and senha=md5('46584');
 
 
 
@@ -66,6 +96,12 @@ insert into clientes (nome,fone) values('fernanda','91234-1111');
 
 describe clientes;
 select * from clientes;
+delete from clientes where idCli=3;
+drop table clientes;
+
+-- no Mysql faça uma pesquisa diferente de usuário seguindo os devidos passos esse j% trás somente nomes com essa letra e assim serve para outra pesquisa.
+ select * from clientes where nome like 'c%';
+
    
    
    
